@@ -38,6 +38,6 @@ public class ReportController {
     @GetMapping("/reports")
     @PreAuthorize("hasAuthority('prothetic_user')")
     public List<ReportRecord> findReports(@RequestParam(required = false) LocalDateTime from, @RequestParam(required = false) LocalDateTime to) {
-        return reportService.findReports(new ReportFilter(from, to));
+        return reportService.findReports(new ReportFilter(null, from, to));
     }
 }

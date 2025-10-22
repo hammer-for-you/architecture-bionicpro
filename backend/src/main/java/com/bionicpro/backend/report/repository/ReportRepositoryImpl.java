@@ -35,6 +35,9 @@ class ReportRepositoryImpl implements ReportRepository {
 
     @Override
     public List<ReportRecord> findReports(ReportFilter filter) {
-        return jdbcTemplate.query("select * from report where metric_timestamp >= ? and metric_timestamp <= ?", mapper, filter.from(), filter.to());
+        if (filter.userEmail() == null) {
+            throw new IllegalArgumentException("User email is required");
+        }
+        return jdbcTemplate.query("select * from report where metric_timestamp >= ? and metric_timestamp <= ? and user_email = ?", mapper, filter.from(), filter.to(), filter.userEmail());
     }
 }

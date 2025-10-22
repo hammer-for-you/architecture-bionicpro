@@ -19,6 +19,7 @@ import java.time.LocalDateTime;
  * @author Maxim Nikolsky
  */
 public record ReportFilter(
+        String userEmail,
         LocalDateTime from,
         LocalDateTime to
 ) {
@@ -29,5 +30,9 @@ public record ReportFilter(
         if (to == null) {
             to = LocalDateTime.of(3000, 1, 1, 0, 0);
         }
+    }
+
+    public ReportFilter withUserEmail(String userEmail) {
+        return new ReportFilter(userEmail, from, to);
     }
 }

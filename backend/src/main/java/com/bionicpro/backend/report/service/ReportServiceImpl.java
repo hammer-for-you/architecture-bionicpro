@@ -15,6 +15,8 @@ package com.bionicpro.backend.report.service;
 import com.bionicpro.backend.report.model.ReportFilter;
 import com.bionicpro.backend.report.model.ReportRecord;
 import com.bionicpro.backend.report.repository.ReportRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,6 +35,15 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public List<ReportRecord> findReports(ReportFilter filter) {
-        return repository.findReports(filter);
+        var currentUserEmail = getCurrentUserEmail();
+        return repository.findReports(filter.withUserEmail(currentUserEmail));
+    }
+
+    public String getCurrentUserEmail() {
+        var authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication instanceof JwtAuthenticationToken) {
+            return ((JwtAuthenticationToken) authentication).getToken().getClaimAsString("email");
+        }
+        return null;
     }
 }
