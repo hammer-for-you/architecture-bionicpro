@@ -4,7 +4,7 @@ x-airflow-common: &airflow-common
   build:
     context: ./airflow
     dockerfile: Dockerfile
-  environment: &airflow-common-env
+  environment:
     AIRFLOW__CORE__EXECUTOR: LocalExecutor #локальный запуск
     AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow_db:5432/airflow
     AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow_db:5432/airflow
@@ -22,10 +22,10 @@ x-airflow-common: &airflow-common
   volumes:
     - ./dags:/opt/airflow/dags
     - ./dags/sql:/opt/airflow/dags/sql
-    - ./requirements.txt:/opt/airflow/requirements.txt
+    - ./airflow/requirements.txt:/opt/airflow/requirements.txt
     - ./data:/opt/airflow/sample_files
   user: "${AIRFLOW_UID:-50000}:0"
-  depends_on: &airflow-common-depends-on
+  depends_on:
     airflow_db:
       condition: service_healthy
   networks:
@@ -137,6 +137,8 @@ services:
     image: clickhouse/clickhouse-server:latest
     volumes:
       - ./olap-db:/docker-entrypoint-initdb.d
+      - clickhouse-olap-data:/var/lib/clickhouse/
+      - clickhouse-olap-logs:/var/log/clickhouse-server/
     ports:
       - "9123:8123" # HTTP interface
       - "9900:9000" # Native client interface
@@ -271,3 +273,7 @@ services:
 
 networks:
   bionicpro:
+
+volumes:
+  clickhouse-olap-data:
+  clickhouse-olap-logs:

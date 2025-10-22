@@ -1,0 +1,10 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: bionicpro-backend
+  datasource:
+    url: jdbc:clickhouse:http://${DB_HOST:localhost}:${DB_PORT:9123}/${DB_DATABASE:bionicpro}
+    username: ${DB_USERNAME:airflow}
+    password: ${DB_PASSWORD:airflow}
