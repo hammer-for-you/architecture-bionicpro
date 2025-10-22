@@ -12,10 +12,8 @@
 
 package com.bionicpro.backend.report.service;
 
+import com.bionicpro.backend.report.model.Report;
 import com.bionicpro.backend.report.model.ReportFilter;
-import com.bionicpro.backend.report.model.ReportRecord;
-
-import java.util.List;
 
 /**
  * Сервис для генерации отчёта
@@ -29,5 +27,5 @@ public interface ReportService {
      * @param filter Фильтр для получения данных отчёта
      * @return Отчёт
      */
-    List<ReportRecord> generateReport(ReportFilter filter);
+    Report generateReport(ReportFilter filter);
 }

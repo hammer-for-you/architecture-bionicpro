@@ -12,30 +12,35 @@
 
 package com.bionicpro.backend.report.repository;
 
-import com.bionicpro.backend.report.model.ReportRecord;
+import com.bionicpro.backend.report.model.Device;
+import com.bionicpro.backend.report.model.Metric;
+import com.bionicpro.backend.report.model.ReportData;
+import com.bionicpro.backend.report.model.User;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.lang.NonNull;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
 /**
  *
  * @author Maxim Nikolsky
  */
-class ReportRecordMapper implements RowMapper<ReportRecord> {
+class ReportRecordMapper implements RowMapper<ReportData> {
     @Override
-    public ReportRecord mapRow(@NonNull ResultSet rs, int rowNum) throws SQLException {
-        return new ReportRecord(
+    public ReportData mapRow(@NonNull ResultSet rs, int rowNum) throws SQLException {
+        return new ReportData(
                 mapUser(rs),
                 mapDevice(rs),
-                mapMetric(rs)
+                mapMetrics(rs)
         );
     }
 
-    private ReportRecord.User mapUser(ResultSet rs) throws SQLException {
-        return new ReportRecord.User(
+    private User mapUser(ResultSet rs) throws SQLException {
+        return new User(
                 rs.getString("user_name"),
                 rs.getString("user_email"),
                 rs.getString("user_phone"),
@@ -43,18 +48,18 @@ class ReportRecordMapper implements RowMapper<ReportRecord> {
         );
     }
 
-    private ReportRecord.Device mapDevice(ResultSet rs) throws SQLException {
-        return new ReportRecord.Device(
+    private Device mapDevice(ResultSet rs) throws SQLException {
+        return new Device(
                 UUID.fromString(rs.getString("device_id")),
                 rs.getString("device_name")
         );
     }
 
-    private ReportRecord.Metric mapMetric(ResultSet rs) throws SQLException {
-        return new ReportRecord.Metric(
-                rs.getString("metric_value"),
-                rs.getString("metric_unit"),
-                rs.getTimestamp("metric_timestamp").toLocalDateTime()
-        );
+    private List<Metric> mapMetrics(ResultSet rs) throws SQLException {
+        Object[] array = (Object[]) rs.getArray("metrics").getArray();
+        return Arrays.stream(array).map(element -> {
+            var tuple = (Object[]) element;
+            return new Metric((Double) tuple[0], (String) tuple[1]);
+        }).toList();
     }
 }

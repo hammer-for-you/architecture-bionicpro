@@ -13,7 +13,7 @@
 package com.bionicpro.backend.report.repository;
 
 import com.bionicpro.backend.report.model.ReportFilter;
-import com.bionicpro.backend.report.model.ReportRecord;
+import com.bionicpro.backend.report.model.ReportData;
 
 import java.util.List;
 
@@ -29,5 +29,5 @@ public interface ReportRepository {
      * @param filter Фильтр для запроса данных
      * @return Коллекция данных для генерации отчёта
      */
-    List<ReportRecord> findReportData(ReportFilter filter);
+    List<ReportData> findReportData(ReportFilter filter);
 }
