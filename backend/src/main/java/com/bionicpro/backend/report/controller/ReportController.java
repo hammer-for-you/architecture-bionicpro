@@ -15,6 +15,7 @@ package com.bionicpro.backend.report.controller;
 import com.bionicpro.backend.report.model.ReportFilter;
 import com.bionicpro.backend.report.model.ReportRecord;
 import com.bionicpro.backend.report.service.ReportService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,7 +35,8 @@ public class ReportController {
         this.reportService = reportService;
     }
 
-    @GetMapping("/report")
+    @GetMapping("/reports")
+    @PreAuthorize("hasAuthority('prothetic_user')")
     public List<ReportRecord> findReports(@RequestParam(required = false) LocalDateTime from, @RequestParam(required = false) LocalDateTime to) {
         return reportService.findReports(new ReportFilter(from, to));
     }
