@@ -49,6 +49,7 @@ public class ReportController {
 
         var headers = new HttpHeaders();
         headers.add("Content-Disposition", "attachment; filename=" + generateFilename());
+        headers.add("Access-Control-Expose-Headers", "Content-Disposition");
         headers.setContentType(new MediaType("text", "plain", StandardCharsets.UTF_8));
 
         return ResponseEntity.ok().headers(headers).body(new InputStreamResource(inputStream));

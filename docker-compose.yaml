@@ -6,8 +6,8 @@ x-airflow-common: &airflow-common
     dockerfile: Dockerfile
   environment:
     AIRFLOW__CORE__EXECUTOR: LocalExecutor #локальный запуск
-    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow_db:5432/airflow
-    AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow_db:5432/airflow
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow-db:5432/airflow
+    AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow-db:5432/airflow
     AIRFLOW__CORE__FERNET_KEY: ''
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
     AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
@@ -16,9 +16,9 @@ x-airflow-common: &airflow-common
     AIRFLOW__WEBSERVER__SECRET_KEY: 'airflow-secret-key'
     _PIP_ADDITIONAL_REQUIREMENTS: ''
     AIRFLOW_INPUT_DIR: '/opt/airflow/dag-inputs'
-    AIRFLOW_CONN_CRM_DB: postgresql+psycopg2://airflow:airflow@crm_db:5432/bionicpro
-    AIRFLOW_CONN_TELEMETRY_DB: clickhouse://airflow:airflow@telemetry_db:9000/bionicpro
-    AIRFLOW_CONN_OLAP_DB: clickhouse://airflow:airflow@olap_db:9000/bionicpro
+    AIRFLOW_CONN_CRM_DB: postgresql+psycopg2://airflow:airflow@crm-db:5432/bionicpro
+    AIRFLOW_CONN_TELEMETRY_DB: clickhouse://airflow:airflow@telemetry-db:9000/bionicpro
+    AIRFLOW_CONN_OLAP_DB: clickhouse://airflow:airflow@olap-db:9000/bionicpro
   volumes:
     - ./dags:/opt/airflow/dags
     - ./dags/sql:/opt/airflow/dags/sql
@@ -26,14 +26,14 @@ x-airflow-common: &airflow-common
     - ./data:/opt/airflow/sample_files
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
-    airflow_db:
+    airflow-db:
       condition: service_healthy
   networks:
     - bionicpro
 
 services:
   # Keycloak DB
-  keycloak_db:
+  keycloak-db:
     image: postgres:14
     environment:
       POSTGRES_DB: keycloak_db
@@ -53,10 +53,10 @@ services:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
       KC_DB: postgres
-      KC_DB_URL: jdbc:postgresql://keycloak_db:5432/keycloak_db
+      KC_DB_URL: jdbc:postgresql://keycloak-db:5432/keycloak_db
       KC_DB_USERNAME: keycloak_user
       KC_DB_PASSWORD: keycloak_password
-    command: 
+    command:
       - start-dev
       - --import-realm
     volumes:
@@ -66,7 +66,7 @@ services:
     networks:
       - bionicpro
     depends_on:
-      - keycloak_db
+      - keycloak-db
 
   # Frontend
   frontend:
@@ -82,9 +82,35 @@ services:
       REACT_APP_KEYCLOAK_URL: http://localhost:8080
       REACT_APP_KEYCLOAK_REALM: reports-realm
       REACT_APP_KEYCLOAK_CLIENT_ID: reports-frontend
+    depends_on:
+      backend:
+        condition: service_healthy
+
+  # Backend
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+      - "5005:5005"
+    networks:
+      - bionicpro
+    environment:
+      OLAP_DB_HOST: olap-db
+      KEYCLOAK_HOST: http://keycloak
+      KEYCLOAK_PORT: 8080
+    depends_on:
+      olap-db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/actuator/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
 
   # CRM DB
-  crm_db:
+  crm-db:
     image: postgres:14
     volumes:
       - ./crm-db:/docker-entrypoint-initdb.d
@@ -112,7 +138,7 @@ services:
     restart: always
 
   # Telemetry DB
-  telemetry_db:
+  telemetry-db:
     image: clickhouse/clickhouse-server:latest
     volumes:
       - ./telemetry-db:/docker-entrypoint-initdb.d
@@ -133,7 +159,7 @@ services:
     restart: always
 
   # OLAP DB
-  olap_db:
+  olap-db:
     image: clickhouse/clickhouse-server:latest
     volumes:
       - ./olap-db:/docker-entrypoint-initdb.d
@@ -149,7 +175,7 @@ services:
     networks:
       - bionicpro
     depends_on:
-      telemetry_db:
+      telemetry-db:
         condition: service_healthy
     healthcheck:
       test: ["CMD-SHELL", "clickhouse-client --query 'SELECT 1'"]
@@ -159,7 +185,7 @@ services:
     restart: always
 
   # Airflow DB
-  airflow_db:
+  airflow-db:
     image: postgres:14
     environment:
       POSTGRES_DB: airflow
@@ -186,13 +212,13 @@ services:
   airflow-init:
     <<: *airflow-common
     depends_on:
-      airflow_db:
+      airflow-db:
         condition: service_healthy
-      crm_db:
+      crm-db:
         condition: service_healthy
-      telemetry_db:
+      telemetry-db:
         condition: service_healthy
-      olap_db:
+      olap-db:
         condition: service_healthy
     command: >
       bash -c " airflow db init && airflow users create \ --username admin \ --firstname admin \ --lastname admin \ --role Admin \ --email admin@sample.ru \ --password admin 
@@ -205,7 +231,7 @@ services:
     ports:
       - "7070:8080"
     depends_on:
-      airflow_db:
+      airflow-db:
         condition: service_healthy
       airflow-init:
         condition: service_completed_successfully
@@ -225,7 +251,7 @@ services:
       - bionicpro
     command: scheduler
     depends_on:
-      airflow_db:
+      airflow-db:
         condition: service_healthy
       airflow-webserver:
         condition: service_healthy
@@ -239,7 +265,7 @@ services:
   airflow-triggerer:
     <<: *airflow-common
     depends_on:
-      airflow_db:
+      airflow-db:
         condition: service_healthy
       airflow-init:
         condition: service_completed_successfully
@@ -260,7 +286,7 @@ services:
   airflow-cli:
     <<: *airflow-common
     depends_on:
-      airflow_db:
+      airflow-db:
         condition: service_healthy
     networks:
       - bionicpro
