@@ -16,8 +16,9 @@ x-airflow-common: &airflow-common
     AIRFLOW__WEBSERVER__SECRET_KEY: 'airflow-secret-key'
     _PIP_ADDITIONAL_REQUIREMENTS: ''
     AIRFLOW_INPUT_DIR: '/opt/airflow/dag-inputs'
-    AIRFLOW_CONN_CRM_DB_CONN: postgresql+psycopg2://airflow:airflow@crm_db:9951/bionicpro
-    AIRFLOW_CONN_TELEMETRY_DB_CONN: clickhouse://airflow:airflow@telemetry_db:9000/bionicpro
+    AIRFLOW_CONN_CRM_DB: postgresql+psycopg2://airflow:airflow@crm_db:5432/bionicpro
+    AIRFLOW_CONN_TELEMETRY_DB: clickhouse://airflow:airflow@telemetry_db:9000/bionicpro
+    AIRFLOW_CONN_OLAP_DB: clickhouse://airflow:airflow@olap_db:9000/bionicpro
   volumes:
     - ./dags:/opt/airflow/dags
     - ./dags/sql:/opt/airflow/dags/sql

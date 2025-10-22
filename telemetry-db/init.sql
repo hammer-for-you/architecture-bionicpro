@@ -1,3 +1,5 @@
+use bionicpro;
+
 create table if not exists telemetry(
     id UUID default generateUUIDv4(),
     user_email String,

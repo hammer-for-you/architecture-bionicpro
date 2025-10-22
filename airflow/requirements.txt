@@ -1,2 +1,2 @@
 psycopg2-binary
-airflow-providers-clickhouse
+airflow-clickhouse-plugin[pandas]

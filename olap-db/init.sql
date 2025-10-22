@@ -1,3 +1,5 @@
+use bionicpro;
+
 create table if not exists report(
     id UUID default generateUUIDv4(),
     user_name String,
