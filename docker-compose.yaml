@@ -53,7 +53,7 @@ services:
     ports:
       - "9951:5432"
     environment:
-      POSTGRES_DB: airflow
+      POSTGRES_DB: bionicpro
       POSTGRES_USER: airflow
       POSTGRES_PASSWORD: airflow
     networks:
@@ -73,28 +73,22 @@ services:
       start_period: 5s
     restart: always
   telemetry_db:
-    image: postgres:14
+    image: clickhouse/clickhouse-server:latest
     volumes:
       - ./telemetry-db:/docker-entrypoint-initdb.d
     ports:
-      - "9961:5432"
+      - "8123:8123" # HTTP interface
+      - "9000:9000" # Native client interface
     environment:
-      POSTGRES_DB: airflow
-      POSTGRES_USER: airflow
-      POSTGRES_PASSWORD: airflow
+      CLICKHOUSE_USER: airflow
+      CLICKHOUSE_PASSWORD: airflow
+      CLICKHOUSE_DB: bionicpro
     networks:
       - bionicpro
-    logging:
-      options:
-        max-size: 10m
-        max-file: "3"
     healthcheck:
-      test:
-        - CMD
-        - pg_isready
-        - -U
-        - airflow
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:8123/?query=SELECT%201 || exit 1"]
       interval: 10s
+      timeout: 10s
       retries: 5
       start_period: 5s
     restart: always

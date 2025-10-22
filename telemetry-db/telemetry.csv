@@ -1,81 +1,81 @@
 user_email,device_id,metric_value,metric_unit,metric_timestamp
-prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,85.2,battery_percent,2024-01-15T08:30:45Z
-prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,12.7,temperature_c,2024-01-15T08:30:45Z
-prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,156,grip_force_kg,2024-01-15T08:30:45Z
-prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,3200,signal_strength,2024-01-15T08:30:45Z
-prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,450,usage_minutes,2024-01-15T08:30:45Z
-prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,83.7,battery_percent,2024-01-15T12:15:22Z
-prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,13.2,temperature_c,2024-01-15T12:15:22Z
-prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,128,grip_force_kg,2024-01-15T12:15:22Z
-prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,2850,signal_strength,2024-01-15T12:15:22Z
-prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,520,usage_minutes,2024-01-15T12:15:22Z
-prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,78.9,battery_percent,2024-01-15T16:45:10Z
-prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,14.1,temperature_c,2024-01-15T16:45:10Z
-prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,142,grip_force_kg,2024-01-15T16:45:10Z
-prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,3100,signal_strength,2024-01-15T16:45:10Z
-prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,610,usage_minutes,2024-01-15T16:45:10Z
-prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,72.3,battery_percent,2024-01-15T20:30:05Z
-prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,12.9,temperature_c,2024-01-15T20:30:05Z
-prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,135,grip_force_kg,2024-01-15T20:30:05Z
-prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,2950,signal_strength,2024-01-15T20:30:05Z
-prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,680,usage_minutes,2024-01-15T20:30:05Z
-prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,92.1,battery_percent,2024-01-15T07:30:15Z
-prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,13.2,temperature_c,2024-01-15T07:30:15Z
-prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,8567,step_count,2024-01-15T07:30:15Z
-prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,4.2,walking_speed_kmh,2024-01-15T07:30:15Z
-prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,3250,signal_strength,2024-01-15T07:30:15Z
-prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,88.7,battery_percent,2024-01-15T12:45:30Z
-prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,14.1,temperature_c,2024-01-15T12:45:30Z
-prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,12453,step_count,2024-01-15T12:45:30Z
-prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,3.8,walking_speed_kmh,2024-01-15T12:45:30Z
-prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,2980,signal_strength,2024-01-15T12:45:30Z
-prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,83.4,battery_percent,2024-01-15T17:20:45Z
-prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,15.3,temperature_c,2024-01-15T17:20:45Z
-prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,15892,step_count,2024-01-15T17:20:45Z
-prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,4.5,walking_speed_kmh,2024-01-15T17:20:45Z
-prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,2850,signal_strength,2024-01-15T17:20:45Z
-prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,77.9,battery_percent,2024-01-15T21:15:20Z
-prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,13.8,temperature_c,2024-01-15T21:15:20Z
-prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,18234,step_count,2024-01-15T21:15:20Z
-prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,4.1,walking_speed_kmh,2024-01-15T21:15:20Z
-prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,2720,signal_strength,2024-01-15T21:15:20Z
-prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,87.3,battery_percent,2024-01-15T10:10:25Z
-prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,12.1,temperature_c,2024-01-15T10:10:25Z
-prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,172,grip_force_kg,2024-01-15T10:10:25Z
-prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,3400,signal_strength,2024-01-15T10:10:25Z
-prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,420,usage_minutes,2024-01-15T10:10:25Z
-prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,83.9,battery_percent,2024-01-15T14:35:40Z
-prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,12.8,temperature_c,2024-01-15T14:35:40Z
-prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,158,grip_force_kg,2024-01-15T14:35:40Z
-prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,3150,signal_strength,2024-01-15T14:35:40Z
-prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,480,usage_minutes,2024-01-15T14:35:40Z
-prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,79.5,battery_percent,2024-01-15T18:50:15Z
-prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,13.4,temperature_c,2024-01-15T18:50:15Z
-prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,145,grip_force_kg,2024-01-15T18:50:15Z
-prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,2980,signal_strength,2024-01-15T18:50:15Z
-prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,550,usage_minutes,2024-01-15T18:50:15Z
-prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,73.8,battery_percent,2024-01-15T22:45:55Z
-prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,12.9,temperature_c,2024-01-15T22:45:55Z
-prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,132,grip_force_kg,2024-01-15T22:45:55Z
-prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,2850,signal_strength,2024-01-15T22:45:55Z
-prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,620,usage_minutes,2024-01-15T22:45:55Z
-prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,89.7,battery_percent,2024-01-15T11:05:35Z
-prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,11.9,temperature_c,2024-01-15T11:05:35Z
-prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,161,grip_force_kg,2024-01-15T11:05:35Z
-prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,3300,signal_strength,2024-01-15T11:05:35Z
-prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,400,usage_minutes,2024-01-15T11:05:35Z
-prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,85.4,battery_percent,2024-01-15T15:25:50Z
-prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,12.5,temperature_c,2024-01-15T15:25:50Z
-prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,152,grip_force_kg,2024-01-15T15:25:50Z
-prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,3120,signal_strength,2024-01-15T15:25:50Z
-prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,470,usage_minutes,2024-01-15T15:25:50Z
-prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,80.2,battery_percent,2024-01-15T19:40:25Z
-prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,13.3,temperature_c,2024-01-15T19:40:25Z
-prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,139,grip_force_kg,2024-01-15T19:40:25Z
-prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,3020,signal_strength,2024-01-15T19:40:25Z
-prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,530,usage_minutes,2024-01-15T19:40:25Z
-prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,74.6,battery_percent,2024-01-15T23:15:40Z
-prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,12.7,temperature_c,2024-01-15T23:15:40Z
-prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,126,grip_force_kg,2024-01-15T23:15:40Z
-prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,2880,signal_strength,2024-01-15T23:15:40Z
-prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,580,usage_minutes,2024-01-15T23:15:40Z
+prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,85.2,battery_percent,2024-01-15 08:30:45
+prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,12.7,temperature_c,2024-01-15 08:30:45
+prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,156,grip_force_kg,2024-01-15 08:30:45
+prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,3200,signal_strength,2024-01-15 08:30:45
+prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,450,usage_minutes,2024-01-15 08:30:45
+prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,83.7,battery_percent,2024-01-15 12:15:22
+prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,13.2,temperature_c,2024-01-15 12:15:22
+prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,128,grip_force_kg,2024-01-15 12:15:22
+prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,2850,signal_strength,2024-01-15 12:15:22
+prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,520,usage_minutes,2024-01-15 12:15:22
+prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,78.9,battery_percent,2024-01-15 16:45:10
+prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,14.1,temperature_c,2024-01-15 16:45:10
+prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,142,grip_force_kg,2024-01-15 16:45:10
+prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,3100,signal_strength,2024-01-15 16:45:10
+prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,610,usage_minutes,2024-01-15 16:45:10
+prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,72.3,battery_percent,2024-01-15 20:30:05
+prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,12.9,temperature_c,2024-01-15 20:30:05
+prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,135,grip_force_kg,2024-01-15 20:30:05
+prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,2950,signal_strength,2024-01-15 20:30:05
+prothetic1@example.com,7c4e4b8a-1f2a-4e9b-b6c3-8d5e2f1a9c7b,680,usage_minutes,2024-01-15 20:30:05
+prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,92.1,battery_percent,2024-01-15 07:30:15
+prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,13.2,temperature_c,2024-01-15 07:30:15
+prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,8567,step_count,2024-01-15 07:30:15
+prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,4.2,walking_speed_kmh,2024-01-15 07:30:15
+prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,3250,signal_strength,2024-01-15 07:30:15
+prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,88.7,battery_percent,2024-01-15 12:45:30
+prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,14.1,temperature_c,2024-01-15 12:45:30
+prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,12453,step_count,2024-01-15 12:45:30
+prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,3.8,walking_speed_kmh,2024-01-15 12:45:30
+prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,2980,signal_strength,2024-01-15 12:45:30
+prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,83.4,battery_percent,2024-01-15 17:20:45
+prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,15.3,temperature_c,2024-01-15 17:20:45
+prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,15892,step_count,2024-01-15 17:20:45
+prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,4.5,walking_speed_kmh,2024-01-15 17:20:45
+prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,2850,signal_strength,2024-01-15 17:20:45
+prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,77.9,battery_percent,2024-01-15 21:15:20
+prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,13.8,temperature_c,2024-01-15 21:15:20
+prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,18234,step_count,2024-01-15 21:15:20
+prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,4.1,walking_speed_kmh,2024-01-15 21:15:20
+prothetic2@example.com,a3b5c7d9-e8f1-4a6b-9c2d-5e7f8a9b1c3d,2720,signal_strength,2024-01-15 21:15:20
+prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,87.3,battery_percent,2024-01-15 10:10:25
+prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,12.1,temperature_c,2024-01-15 10:10:25
+prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,172,grip_force_kg,2024-01-15 10:10:25
+prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,3400,signal_strength,2024-01-15 10:10:25
+prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,420,usage_minutes,2024-01-15 10:10:25
+prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,83.9,battery_percent,2024-01-15 14:35:40
+prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,12.8,temperature_c,2024-01-15 14:35:40
+prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,158,grip_force_kg,2024-01-15 14:35:40
+prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,3150,signal_strength,2024-01-15 14:35:40
+prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,480,usage_minutes,2024-01-15 14:35:40
+prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,79.5,battery_percent,2024-01-15 18:50:15
+prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,13.4,temperature_c,2024-01-15 18:50:15
+prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,145,grip_force_kg,2024-01-15 18:50:15
+prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,2980,signal_strength,2024-01-15 18:50:15
+prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,550,usage_minutes,2024-01-15 18:50:15
+prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,73.8,battery_percent,2024-01-15 22:45:55
+prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,12.9,temperature_c,2024-01-15 22:45:55
+prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,132,grip_force_kg,2024-01-15 22:45:55
+prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,2850,signal_strength,2024-01-15 22:45:55
+prothetic2@example.com,f2e4d6c8-b9a7-5b3c-1d8e-7f6a5b4c3d2e,620,usage_minutes,2024-01-15 22:45:55
+prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,89.7,battery_percent,2024-01-15 11:05:35
+prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,11.9,temperature_c,2024-01-15 11:05:35
+prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,161,grip_force_kg,2024-01-15 11:05:35
+prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,3300,signal_strength,2024-01-15 11:05:35
+prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,400,usage_minutes,2024-01-15 11:05:35
+prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,85.4,battery_percent,2024-01-15 15:25:50
+prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,12.5,temperature_c,2024-01-15 15:25:50
+prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,152,grip_force_kg,2024-01-15 15:25:50
+prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,3120,signal_strength,2024-01-15 15:25:50
+prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,470,usage_minutes,2024-01-15 15:25:50
+prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,80.2,battery_percent,2024-01-15 19:40:25
+prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,13.3,temperature_c,2024-01-15 19:40:25
+prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,139,grip_force_kg,2024-01-15 19:40:25
+prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,3020,signal_strength,2024-01-15 19:40:25
+prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,530,usage_minutes,2024-01-15 19:40:25
+prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,74.6,battery_percent,2024-01-15 23:15:40
+prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,12.7,temperature_c,2024-01-15 23:15:40
+prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,126,grip_force_kg,2024-01-15 23:15:40
+prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,2880,signal_strength,2024-01-15 23:15:40
+prothetic3@example.com,9a8b7c6d-5e4f-3a2b-1c8d-9e8f7a6b5c4d,580,usage_minutes,2024-01-15 23:15:40
