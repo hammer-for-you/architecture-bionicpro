@@ -34,7 +34,7 @@ class ReportRepositoryImpl implements ReportRepository {
     }
 
     @Override
-    public List<ReportRecord> findReports(ReportFilter filter) {
+    public List<ReportRecord> findReportData(ReportFilter filter) {
         if (filter.userEmail() == null) {
             throw new IllegalArgumentException("User email is required");
         }

@@ -16,7 +16,11 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 /**
+ * Данные для генерации отчёта
  *
+ * @param user   Данные пользователя
+ * @param device Данные протеза
+ * @param metric Метрика
  * @author Maxim Nikolsky
  */
 public record ReportRecord(
@@ -24,6 +28,14 @@ public record ReportRecord(
         Device device,
         Metric metric
 ) {
+    /**
+     * Данные пользователя
+     *
+     * @param name    Имя пользователя
+     * @param email   Email пользователя
+     * @param phone   Телефон пользователя
+     * @param address Адрес пользователя
+     */
     public record User(
             String name,
             String email,
@@ -32,12 +44,25 @@ public record ReportRecord(
     ) {
     }
 
+    /**
+     * Данные протеза
+     *
+     * @param id   Идентификатор протеза
+     * @param name Название протеза
+     */
     public record Device(
             UUID id,
             String name
     ) {
     }
 
+    /**
+     * Метрика, полученная от протеза
+     *
+     * @param value     Значение метрики
+     * @param unit      Единица измерения метрики
+     * @param timestamp Дата и время получения метрики
+     */
     public record Metric(
             String value,
             String unit,

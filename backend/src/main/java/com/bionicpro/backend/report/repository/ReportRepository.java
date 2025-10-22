@@ -18,9 +18,16 @@ import com.bionicpro.backend.report.model.ReportRecord;
 import java.util.List;
 
 /**
+ * Репозиторий для получения данных отчёта
  *
  * @author Maxim Nikolsky
  */
 public interface ReportRepository {
-    List<ReportRecord> findReports(ReportFilter filter);
+    /**
+     * Получить данные для генерации отчёта
+     *
+     * @param filter Фильтр для запроса данных
+     * @return Коллекция данных для генерации отчёта
+     */
+    List<ReportRecord> findReportData(ReportFilter filter);
 }

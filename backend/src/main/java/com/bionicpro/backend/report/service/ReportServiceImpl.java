@@ -26,7 +26,7 @@ import java.util.List;
  * @author Maxim Nikolsky
  */
 @Service
-public class ReportServiceImpl implements ReportService {
+class ReportServiceImpl implements ReportService {
     private final ReportRepository repository;
 
     public ReportServiceImpl(ReportRepository repository) {
@@ -34,9 +34,9 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
-    public List<ReportRecord> findReports(ReportFilter filter) {
+    public List<ReportRecord> generateReport(ReportFilter filter) {
         var currentUserEmail = getCurrentUserEmail();
-        return repository.findReports(filter.withUserEmail(currentUserEmail));
+        return repository.findReportData(filter.withUserEmail(currentUserEmail));
     }
 
     public String getCurrentUserEmail() {

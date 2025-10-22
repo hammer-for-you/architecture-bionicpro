@@ -15,7 +15,11 @@ package com.bionicpro.backend.report.model;
 import java.time.LocalDateTime;
 
 /**
+ * Фильтр для получения даннызх отчёта
  *
+ * @param userEmail Email пользователя
+ * @param from      Дата, начиная с которой запрашиваются данные
+ * @param to        Дата, заканчивая которой запрашиваются данные
  * @author Maxim Nikolsky
  */
 public record ReportFilter(
