@@ -1,6 +1,37 @@
 version: '3.8'
 
+x-airflow-common: &airflow-common
+  build:
+    context: ./airflow
+    dockerfile: Dockerfile
+  environment: &airflow-common-env
+    AIRFLOW__CORE__EXECUTOR: LocalExecutor #локальный запуск
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow_db:5432/airflow
+    AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow_db:5432/airflow
+    AIRFLOW__CORE__FERNET_KEY: ''
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
+    AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+    AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session'
+    AIRFLOW__SCHEDULER__ENABLE_HEALTH_CHECK: 'true'
+    AIRFLOW__WEBSERVER__SECRET_KEY: 'airflow-secret-key'
+    _PIP_ADDITIONAL_REQUIREMENTS: ''
+    AIRFLOW_INPUT_DIR: '/opt/airflow/dag-inputs'
+    AIRFLOW_CONN_CRM_DB_CONN: postgresql+psycopg2://airflow:airflow@crm_db:9951/bionicpro
+    AIRFLOW_CONN_TELEMETRY_DB_CONN: clickhouse://airflow:airflow@telemetry_db:9000/bionicpro
+  volumes:
+    - ./dags:/opt/airflow/dags
+    - ./dags/sql:/opt/airflow/dags/sql
+    - ./requirements.txt:/opt/airflow/requirements.txt
+    - ./data:/opt/airflow/sample_files
+  user: "${AIRFLOW_UID:-50000}:0"
+  depends_on: &airflow-common-depends-on
+    airflow_db:
+      condition: service_healthy
+  networks:
+    - bionicpro
+
 services:
+  # Keycloak DB
   keycloak_db:
     image: postgres:14
     environment:
@@ -13,6 +44,8 @@ services:
       - "5433:5432"
     networks:
       - bionicpro
+
+  # Keycloak
   keycloak:
     image: quay.io/keycloak/keycloak:21.1
     environment:
@@ -33,6 +66,8 @@ services:
       - bionicpro
     depends_on:
       - keycloak_db
+
+  # Frontend
   frontend:
     build:
       context: ./frontend
@@ -46,6 +81,8 @@ services:
       REACT_APP_KEYCLOAK_URL: http://localhost:8080
       REACT_APP_KEYCLOAK_REALM: reports-realm
       REACT_APP_KEYCLOAK_CLIENT_ID: reports-frontend
+
+  # CRM DB
   crm_db:
     image: postgres:14
     volumes:
@@ -72,6 +109,8 @@ services:
       retries: 5
       start_period: 5s
     restart: always
+
+  # Telemetry DB
   telemetry_db:
     image: clickhouse/clickhouse-server:latest
     volumes:
@@ -86,12 +125,148 @@ services:
     networks:
       - bionicpro
     healthcheck:
-      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:8123/?query=SELECT%201 || exit 1"]
+      test: ["CMD-SHELL", "clickhouse-client --query 'SELECT 1'"]
+      interval: 3s
+      timeout: 5s
+      retries: 5
+    restart: always
+
+  # OLAP DB
+  olap_db:
+    image: clickhouse/clickhouse-server:latest
+    volumes:
+      - ./olap-db:/docker-entrypoint-initdb.d
+    ports:
+      - "9123:8123" # HTTP interface
+      - "9900:9000" # Native client interface
+    environment:
+      CLICKHOUSE_USER: airflow
+      CLICKHOUSE_PASSWORD: airflow
+      CLICKHOUSE_DB: bionicpro
+    networks:
+      - bionicpro
+    depends_on:
+      telemetry_db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "clickhouse-client --query 'SELECT 1'"]
+      interval: 3s
+      timeout: 5s
+      retries: 5
+    restart: always
+
+  # Airflow DB
+  airflow_db:
+    image: postgres:14
+    environment:
+      POSTGRES_DB: airflow
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+    volumes:
+      - ./postgres-airflow-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - bionicpro
+    healthcheck:
+      test:
+        - CMD
+        - pg_isready
+        - -U
+        - airflow
       interval: 10s
-      timeout: 10s
       retries: 5
       start_period: 5s
     restart: always
+
+  # Airflow Init
+  airflow-init:
+    <<: *airflow-common
+    depends_on:
+      airflow_db:
+        condition: service_healthy
+      crm_db:
+        condition: service_healthy
+      telemetry_db:
+        condition: service_healthy
+      olap_db:
+        condition: service_healthy
+    command: >
+      bash -c " airflow db init && airflow users create \ --username admin \ --firstname admin \ --lastname admin \ --role Admin \ --email admin@sample.ru \ --password admin 
+      
+      " 
+
+  # Airflow Webserver
+  airflow-webserver:
+    <<: *airflow-common
+    ports:
+      - "7070:8080"
+    depends_on:
+      airflow_db:
+        condition: service_healthy
+      airflow-init:
+        condition: service_completed_successfully
+    command: webserver
+    networks:
+      - bionicpro
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -f http://localhost:8080/health || exit 1" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Airflow Scheduler
+  airflow-scheduler:
+    <<: *airflow-common
+    networks:
+      - bionicpro
+    command: scheduler
+    depends_on:
+      airflow_db:
+        condition: service_healthy
+      airflow-webserver:
+        condition: service_healthy
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -f http://localhost:8080/health || exit 1" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Airflow Triggerer
+  airflow-triggerer:
+    <<: *airflow-common
+    depends_on:
+      airflow_db:
+        condition: service_healthy
+      airflow-init:
+        condition: service_completed_successfully
+    networks:
+      - bionicpro
+    command: bash -c "airflow triggerer"
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - airflow jobs check --job-type TriggererJob --hostname "${HOSTNAME}"
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    restart: always
+
+  # Airflow CLI
+  airflow-cli:
+    <<: *airflow-common
+    depends_on:
+      airflow_db:
+        condition: service_healthy
+    networks:
+      - bionicpro
+    profiles:
+      - debug
+    command:
+      - bash
+      - -c
+      - airflow
 
 networks:
   bionicpro:
