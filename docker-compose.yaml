@@ -11,6 +11,8 @@ services:
       - ./postgres-keycloak-data:/var/lib/postgresql/data
     ports:
       - "5433:5432"
+    networks:
+      - bionicpro
   keycloak:
     image: quay.io/keycloak/keycloak:21.1
     environment:
@@ -27,6 +29,8 @@ services:
       - ./keycloak/realm-export.json:/opt/keycloak/data/import/realm-export.json
     ports:
       - "8080:8080"
+    networks:
+      - bionicpro
     depends_on:
       - keycloak_db
   frontend:
@@ -35,6 +39,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
+    networks:
+      - bionicpro
     environment:
       REACT_APP_API_URL: http://localhost:8000
       REACT_APP_KEYCLOAK_URL: http://localhost:8080
