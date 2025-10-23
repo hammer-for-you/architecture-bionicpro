@@ -1,0 +1,30 @@
+server:
+  port: 8000
+
+keycloak:
+  url: ${KEYCLOAK_HOST:http://localhost}:${KEYCLOAK_PORT:8080}
+
+management:
+  endpoints:
+    web:
+      expose:
+        include: health, info
+  endpoint:
+    health:
+      show-details: always
+      show-components: always
+
+spring:
+  application:
+    name: bionicpro-backend
+  datasource:
+    url: jdbc:clickhouse:http://${OLAP_DB_HOST:localhost}:${OLAP_DB_PORT:8123}/${OLAP_DATABASE:bionicpro}
+    username: ${DB_USERNAME:airflow}
+    password: ${DB_PASSWORD:airflow}
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${keycloak.url}/realms/reports-realm
+          jwk-set-uri: ${keycloak.url}/realms/reports-realm/protocol/openid-connect/certs
+
