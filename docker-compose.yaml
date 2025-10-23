@@ -5,7 +5,7 @@ x-airflow-common: &airflow-common
     context: ./airflow
     dockerfile: Dockerfile
   environment:
-    AIRFLOW__CORE__EXECUTOR: LocalExecutor #локальный запуск
+    AIRFLOW__CORE__EXECUTOR: LocalExecutor
     AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow-db:5432/airflow
     AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow-db:5432/airflow
     AIRFLOW__CORE__FERNET_KEY: ''
@@ -143,8 +143,8 @@ services:
     volumes:
       - ./telemetry-db:/docker-entrypoint-initdb.d
     ports:
-      - "8123:8123" # HTTP interface
-      - "9000:9000" # Native client interface
+      - "8123:8123" 
+      - "9000:9000" 
     environment:
       CLICKHOUSE_USER: airflow
       CLICKHOUSE_PASSWORD: airflow
@@ -166,17 +166,14 @@ services:
       - clickhouse-olap-data:/var/lib/clickhouse/
       - clickhouse-olap-logs:/var/log/clickhouse-server/
     ports:
-      - "9123:8123" # HTTP interface
-      - "9900:9000" # Native client interface
+      - "9123:8123" 
+      - "9900:9000" 
     environment:
       CLICKHOUSE_USER: airflow
       CLICKHOUSE_PASSWORD: airflow
       CLICKHOUSE_DB: bionicpro
     networks:
       - bionicpro
-    depends_on:
-      telemetry-db:
-        condition: service_healthy
     healthcheck:
       test: ["CMD-SHELL", "clickhouse-client --query 'SELECT 1'"]
       interval: 3s

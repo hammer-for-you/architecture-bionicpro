@@ -6,7 +6,7 @@ const ReportPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const defaultFromDate = '2025-10-22T00:00';
+  const defaultFromDate = '2025-10-21T00:00';
   const defaultToDate = '2025-10-23T00:00';
 
   const [fromDate, setFromDate] = useState<string>(defaultFromDate);
