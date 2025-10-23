@@ -1,15 +1,3 @@
-/*
- * Copyright (c) 2025 FORS Development Center
- * Trifonovskiy tup. 3, Moscow, 129272, Russian Federation
- * All rights reserved.
- *
- * This software is the confidential and proprietary information of
- * FORS Development Center ("Confidential Information"). You shall not
- * disclose such Confidential Information and shall use it only in
- * accordance with the terms of the license agreement you entered into
- * with FORS.
- */
-
 package com.bionicpro.backend.report.controller;
 
 import com.bionicpro.backend.report.model.ReportFilter;
@@ -44,8 +32,9 @@ public class ReportController {
     @PreAuthorize("hasAuthority('prothetic_user')")
     public ResponseEntity<InputStreamResource> findReports(@RequestParam(required = false) LocalDateTime from, @RequestParam(required = false) LocalDateTime to) {
         var report = reportService.generateReport(new ReportFilter(null, from, to));
+        var content = report != null ? report.asText() : "Данные для формирования отчёта отсутствуют";
 
-        var inputStream = new ByteArrayInputStream(report.asText().getBytes(StandardCharsets.UTF_8));
+        var inputStream = new ByteArrayInputStream(content.getBytes(StandardCharsets.UTF_8));
 
         var headers = new HttpHeaders();
         headers.add("Content-Disposition", "attachment; filename=" + generateFilename());

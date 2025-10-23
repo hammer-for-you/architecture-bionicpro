@@ -1,15 +1,3 @@
-/*
- * Copyright (c) 2025 FORS Development Center
- * Trifonovskiy tup. 3, Moscow, 129272, Russian Federation
- * All rights reserved.
- *
- * This software is the confidential and proprietary information of
- * FORS Development Center ("Confidential Information"). You shall not
- * disclose such Confidential Information and shall use it only in
- * accordance with the terms of the license agreement you entered into
- * with FORS.
- */
-
 package com.bionicpro.backend.report.model;
 
 import java.util.ArrayList;
@@ -72,8 +60,12 @@ public record Report(
         builder.append("Адрес: ").append(user.address()).append("\n");
         builder.append("Телефон: ").append(user.phone()).append("\n");
 
-        for (var deviceMetrics : deviceMetrics) {
-            builder.append(generateDeviceSection(deviceMetrics));
+        if (deviceMetrics.isEmpty()) {
+            builder.append("Данные по устройствам пользователя отсутствуют\n");
+        } else {
+            for (var deviceMetrics : deviceMetrics) {
+                builder.append(generateDeviceSection(deviceMetrics));
+            }
         }
 
         builder.append("====================================================\n");
@@ -92,9 +84,9 @@ public record Report(
 
         var metrics = deviceMetrics.metrics();
         if (metrics.isEmpty()) {
-            builder.append("   Нет данных о показателях\n");
+            builder.append("   Данные о показателях отсутствуют\n");
         } else {
-            builder.append(String.format("%-30s | %-20s%n", "Среднее значение метрики", "Единица измерения"));
+            builder.append(String.format("%-30s | %-20s%n", "Среднее значение показателя", "Единица измерения"));
             builder.append("-------------------------------|--------------------\n");
 
             for (var metric : metrics) {
